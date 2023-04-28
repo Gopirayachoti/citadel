@@ -6,4 +6,6 @@ do
  ((count++))
 done
 echo "You have $count block devices in this system"
-#End
+
+
+#End of the scrip
