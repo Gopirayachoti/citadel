@@ -7,4 +7,4 @@ then
 	echo "given number $num1 is bigger than  $num2"
 else
 	echo "$num1 is not bigger than $num2"
-fjarjb ajj
+
