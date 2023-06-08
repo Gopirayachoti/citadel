@@ -1,0 +1,34 @@
+---
+- name: Play to create a filesystem and mount the same
+  hosts: 192.168.19.200
+  become: true
+  remote_user: ansible
+  tasks:
+   - name: create a volume group
+     lvg:
+      vg: datavg
+      pvs: /dev/sdb2
+      pesize: 32M #this make pe size as 32MB
+   - name: Tasks to create a logical volume
+     lvol:
+      lv: datalv #name of the lv
+      pvs: /dev/sdb2 #pvname in which lv is created
+      vg: datavg #vgname in which lv is created
+      size: 512M #512MB is the size  . Default value is in MBs
+   - name: Task - Create a Filesystem
+     filesystem:
+      fstype: ext4
+      dev: /dev/datavg/datalv
+   - name: Create a  directory for mount point
+     file:
+      path: /datafs01
+      state: directory
+      mode: 0755
+   - name: Mount the Filesystem
+     mount:
+      path: /datafs01
+      src: /dev/datavg/datalv
+      fstype: ext4
+      state: mounted
+...
+#end of the play

@@ -1,0 +1,22 @@
+---
+- name: create a file in remote
+  hosts: [192.168.19.200,192.168.22.200]
+  become: true
+  remote_user: ansible
+  tasks:
+  - name:
+    file:
+      path: /home/ansible/bulkOFfiles
+      state: directory
+      mode: 0755
+  - name: 
+    file:
+      path: /home/ansible/bulkOFfiles/tiru{1..29}.txt
+      state: touch
+      mode: 0644
+  - name: 
+    file:
+      path: /home/ansible/bulkOFfiles/vishal.txt
+      state: touch
+      mode: 0644
+...

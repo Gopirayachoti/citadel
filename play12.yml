@@ -1,0 +1,10 @@
+---
+- name: play  to mpdify /etc/hosts file
+  hosts: localhost
+  become: true
+  remote_user: ansible
+  tasks:
+  - name: print test using debug module
+    debug: 
+     msg: "vasu tinnava ra"
+...

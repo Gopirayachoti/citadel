@@ -1,0 +1,17 @@
+---
+- name: play to demonstrate lineinfile
+  hosts: 192.168.22.200
+  become: yes
+  remote_user: ansible
+  tasks:
+  - name: Insert a line before the given pattern matching tesxt
+    lineinfile: 
+     path: /etc/ssh/sshd_config.old
+     #insertbefore: ^PermitRootLogin
+     insertafter: ^PermitRootLogin
+     line: "#The Above line tells if root is allowed to login"
+     backup: yes
+     state: present
+     create: yes
+     #insertafter: "#the above line enabled if the root user can login to any system...!"
+...

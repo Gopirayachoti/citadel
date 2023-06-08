@@ -1,0 +1,27 @@
+---
+- name: play1
+  #hosts: [192.168.19.200]
+  #hosts:
+  #  [192.168.19.200]
+  #hosts: [192.168.19.200]
+  hosts:
+   - 192.168.19.200
+  #applay tasks on the abovr hosts 
+  become: true
+  remote_user: ansible
+  tasks:
+  #first task to creat a directory i  sthe remote server if it doesnt exists
+  - name: create a directory /home/ansible/Myremote
+    file:
+     path: /home/ansible/Myremote
+     state: directory
+     mode: 0755
+  #second task to copy play1.yml  from currently  directed to /home/ansible/Myremote direcory in the remote server.
+  - name: copy play1.yml to remote server
+    copy:
+     src: /home/ansible/play1.yml
+     dest: /home/ansible/Myremote/play1.yml
+... #end of the play
+
+ 
+...

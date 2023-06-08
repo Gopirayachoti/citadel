@@ -1,0 +1,16 @@
+---
+- name: Create a user
+  hosts: localhost
+  become: yes
+
+  vars:
+    username: rat
+    password: rat
+
+  tasks:
+    - name: Create the user
+      user:
+        name: "{{ username }}"
+        password: "{{ password | password_hash('sha512') }}"
+        state: present
+...

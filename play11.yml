@@ -1,0 +1,8 @@
+---
+- name: nedd to print all
+  hosts: localhost
+  tasks:
+  - name: print test using debug module
+    debug: 
+     msg: "vasu tinnava ra"
+...

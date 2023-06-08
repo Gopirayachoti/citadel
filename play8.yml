@@ -1,0 +1,15 @@
+---
+- name: create a file with some content. Use copy module for the same
+  hosts: [192.168.19.200]  #create a file in the server where you are running this play 
+  become: true
+  remote_user: ansible
+  tasks:
+  - name: create a file with some content
+    copy:
+      dest: /etc/.sec.conf # create a file
+      content: "username: ansible \npassword: ansible" #Put some content
+      mode: 0400 #File permissions
+      owner: root #File owner
+      group: root #File group owner
+...
+# end of the file
